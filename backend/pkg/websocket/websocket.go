@@ -11,10 +11,10 @@ import (
 var upgrader = websocket.Upgrader{
 	ReadBufferSize: 1024,
 	WriteBufferSize: 1024,
-	CheckOrigin: func(r *http.Request)bool{return true}
+	CheckOrigin: func(r *http.Request)bool{return true},
 }
 
-func Upgrade(w http.ResponseWriter, r *http.requests)(*websocket.Conn,error){
+func Upgrade(w http.ResponseWriter, r *http.Request)(*websocket.Conn,error){
 	ws, err := upgrader.Upgrade(w, r, nil)
 	if err != nil{
 		log.Println(err)
@@ -48,7 +48,7 @@ func Writer(conn *websocket.Conn){
 			fmt.Println(err)
 			return
 		}
-		w, err := conn.NextWriter(MessageType)
+		w, err := conn.NextWriter(messageType)
 
 		if err != nil{
 			fmt.Println(err)
