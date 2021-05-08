@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"log"
 	"net/http"
-	"pkg/websocket"
+	"github.com/gorilla/websocket"
 )
 
 // Defining an upgrader
